@@ -1,0 +1,14 @@
+var fs = require('fs');
+var path = require('path');
+
+fs.readdir(process.argv[2], function(err, files) {
+	if (err) throw err;
+	var extensionFilter = ('.'+process.argv[3]);
+	for (var i =0; i < files.length; i++) {
+		if (path.extname(files[i]) === extensionFilter) {
+		console.log(files[i]);
+		}
+		}
+	});
+
+	
