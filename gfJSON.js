@@ -4,6 +4,7 @@ var map = require('through2-map')
 var http = require('http')
 var url = require ('url')
 var bl = require('bl')
+var fs = require('fs')
 var server = http.createServer(function (req,res) {
 	console.log("connection initiated from "+req.headers.host)
 	var urlResult = url.parse(req.url, true)	
@@ -27,10 +28,13 @@ var server = http.createServer(function (req,res) {
 
 	})
 
-function getGFProperties() {
-	var readStream = fs.createReadStream(GFPropertiespath)  
-	//convert to jsonObject			
-	return jsonObject
+function getGlassfishProperties() {
+	fs.readFile('.\config.cfg', function (err, data) {
+		if (err) throw err
+		console.log("retruning JSON")
+		return // jsonObject
+})
+	
 	}
 function getOtherProperties (search) {
 	// do other thing
